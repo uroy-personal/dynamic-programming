@@ -1,25 +1,33 @@
 package practice.knapsack01;
-
-public class CountSubsetSumBrutForce {
+import java.util.*;
+public class CountSubsetSumTopDown {
     static int countSubsets(int[] num, int sum) {
-    	return countSubsetsRecursive(num, sum, 0);
+        Map<String, Integer> subsetCountMap =  new HashMap<String, Integer>();
+		return countSubsetsRecursive(num, sum, 0, subsetCountMap);
     }
-    static int countSubsetsRecursive(int[] num, int sum, int index) {
+    static int countSubsetsRecursive(int[] num, int sum, int index, Map<String, Integer> subsetCountMap) {
+    	String key = index+"-"+sum;
+    	if(subsetCountMap.containsKey(key)) {
+    		return subsetCountMap.get(key);
+    	}
     	int subsetCount = 0;
     	if(sum==0) {
+    		subsetCountMap.put(key, 1);
     		return 1;
     	}
     	if(index>=num.length || num.length==0) {
+    		subsetCountMap.put(key, 0);
     		return 0;
     	}
     	
     	int countWithCurrentIndex =  0 ;
     	if(num[index]<=sum) {
-    		countWithCurrentIndex = countSubsetsRecursive(num, sum-num[index], index+1 );
+    		countWithCurrentIndex = countSubsetsRecursive(num, sum-num[index], index+1,subsetCountMap );
     	}
-    	int countWithOutCurrentIndex = countSubsetsRecursive(num, sum, index+1);
+    	int countWithOutCurrentIndex = countSubsetsRecursive(num, sum, index+1, subsetCountMap);
     	
     	subsetCount = countWithOutCurrentIndex+countWithCurrentIndex;
+    	subsetCountMap.put(key, subsetCount);
     	return subsetCount;
     }
     private static int countSubsetsRecursive2(int[] num, int sum, int currentIndex) {
