@@ -11,7 +11,9 @@ public class TargetSumPlusMinusElementsBrutForce {
 		if(index>=num.length) {
 			return 0;
 		}
-		return -1;
+		int addCurrentNumberToFirstSum = findTargetSubsetsRecursive(num, s, index+1, sum1+num[index], sum2 );
+		int addCurrentNumberToLastSum = findTargetSubsetsRecursive(num, s, index+1, sum1, sum2+num[index] );
+		
 	  }
 	public static void main(String[] args) {
 	
