@@ -18,13 +18,13 @@ public class CoinChangeBrutForce {
 			countWithCurrentElement = countChangeRecursive(denominations, total-denominations[currentIndex], currentIndex);
 		}
 		countWithoutCurrentElement = countChangeRecursive(denominations, total, currentIndex+1);
-	    int totalways =0;
+	    
+		int totalways =0;
 	    totalways = countWithCurrentElement+countWithoutCurrentElement;
 	    
 		return totalways;
 	  }
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		System.out.println(countChange(new int[] {1, 2, 3}, 5));
 	}
 
