@@ -2,25 +2,20 @@ package practice.fibonacynumbers;
 
 public class StaircaseBottomUp {
 	public static int countWays(int n) {
-		// there is only one way for no steps
-		if(n==0) {
-			return 1;
-		}
-		// we can take one step to reach and that is the only way
-		if(n==1) {
-			return 1;
-		}
-		// we can take one step twice or jump two steps to reach the top
-		if(n==2) {
-			return 2;
-		}
-		
-     return -1;
+		int [] dp = new int[n+1];
+		dp[0] =1;
+ 		dp[1] =1;
+ 		dp[2] = 2;
+ 		
+ 		for(int i=3;i<=n;i++) {
+ 			dp[i] = dp[i-1]+dp[i-2]+dp[i-3];
+ 		}
+ 	 return dp[n];
 		
 	}
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println(countWays(3));
+		System.out.println(countWays(4));
 	}
 
 }

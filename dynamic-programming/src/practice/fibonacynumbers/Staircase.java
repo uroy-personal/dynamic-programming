@@ -14,13 +14,19 @@ public class Staircase {
 		if(n==2) {
 			return 2;
 		}
+		//
+		int countWithOneStep = countWays(n-1);
+		int countWithTwoSteps = countWays(n-2);
+		int countWithThreeSteps =  countWays(n-3);
 		
-     return -1;
+		
+     return countWithOneStep+countWithTwoSteps+countWithThreeSteps;
 		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		System.out.println(countWays(3));
+		System.out.println(countWays(4));
 	}
 
 }
