@@ -1,5 +1,7 @@
 package practice.palindromicsubsequence;
 
+import java.util.Arrays;
+
 public class LargestPalindromicSubsequenceBottomUp {
 	public static int computeLargestPalindromicSubsequence(String s) {
 		int length = s.length();
@@ -21,7 +23,9 @@ public class LargestPalindromicSubsequenceBottomUp {
 				}
 			}
 		}
-		
+		for(int[] row: dp) {
+			System.out.println(Arrays.toString(row));
+		}
 		return dp[0][s.length()-1];
 	}
 	

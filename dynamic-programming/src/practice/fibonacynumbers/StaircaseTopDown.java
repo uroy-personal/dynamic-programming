@@ -3,10 +3,8 @@ import java.util.*;
 public class StaircaseTopDown {
 	
 	public static int countWays(int n) {
-		// there is only one way for no steps
 		Map<Integer, Integer> countMap = new HashMap<Integer, Integer>();
         return countWaysRecursive(n,countMap );
-		
 	}
 	public static int countWaysRecursive(int n, Map<Integer, Integer> countMap) {
 		// there is only one way for no steps
